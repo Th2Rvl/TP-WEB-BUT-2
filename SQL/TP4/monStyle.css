@@ -1,0 +1,37 @@
+/* Importation de la police Google */
+@import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
+
+body{
+	color:#585976;		/* Couleur de la police Gris fonc� */
+	background: linear-gradient(#8EB3C8, white);
+	font-family: 'Righteous', cursive; /* Utilisation de la police Righteous */
+}
+
+.cadre{
+	border-style:solid ; 	/* Bordure double */
+	border-width:3px;		/* Epaisseur bordure */
+	border-color:#1B4B67;	/* Couleur de la bordure */
+	border-radius: 5px;		/* Arrondissement des angles */
+	padding:5px;			/* Marge int�rieure */
+	min-height:200px;		/* Hauteur minimale d'une boite */
+	margin:2px; 			/* Marge � l'ext�rieur */
+}
+
+.enGras{
+	font-weight: bold;		/* Ecriture en gras pour les intitul�s des vignettes */
+}
+
+table {
+	width:100%;				/* Largeur de la table */
+}
+
+td {
+	padding:4px;			/* Marge int�rieure pour les cellules du tableau */
+}
+
+th {
+	text-align:center;		/* Alignement texte centr� dans les entetes des tables */
+}
+
+
+

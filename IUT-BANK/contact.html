@@ -1,0 +1,70 @@
+<?php
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - IUT Bank Online</title>
+    <link rel="stylesheet" href="bootstrap-5.3.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <!-- Header -->
+    <div class="row header">
+        <div class="col-md-6 col-12 text-center text-md-start">
+            <img src="images/Logo.jpg" alt="IUT Bank Logo" style="max-width: 150px;" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22150%22 height=%22100%22%3E%3Crect fill=%22%233900EC%22 width=%22150%22 height=%22100%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3EIUT BANK%3C/text%3E%3C/svg%3E'">
+        </div>
+        <div class="col-md-6 col-12 text">
+            <h1>Ma Banque en ligne <br> IUT BANK ONLINE</h1>
+        </div>
+    </div>
+
+    <!-- Présentation -->
+    <div class="row frame text">
+        <h1>-- Bienvenue sur le site de IUT BANK --</h1>
+        <h2>Merci de remplir le formulaire ci-après.</h2>
+    </div>
+
+    <!-- Formulaire de contact -->
+    <div class="row frame">
+        <form id="contactForm">
+            <div class="mb-3">
+                <label for="nom">Nom et prénom :</label>
+                <input type="text" class="form-control" id="nom" name="nom" placeholder="Tapez votre nom et prénom" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="email">Adresse email :</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Tapez votre adresse email" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="message">Votre message :</label>
+                <textarea class="form-control" id="message" name="message" placeholder="Tapez le contenu de votre message" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Envoyer</button>
+
+            <div class="success-message" id="successMessage">
+                ✅ Votre message a été envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.
+            </div>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <div class="row frame">
+        <div class="col-md-6 col-12 text-center text-md-start mb-3 mb-md-0">
+            <a href="index.html" class="btn btn-secondary">Accueil</a>
+        </div>
+        <div class="col-md-6 col-12 text-center text-md-end">
+            <span class="texteNoir">Réalisé par</span>
+            <br>
+            <img src="images/LogoIut.png" id="logoIut" alt="Logo IUT" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%23EC3939%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2230%22 font-weight=%22bold%22%3EIUT%3C/text%3E%3C/svg%3E'">
+        </div>
+    </div>
+</div>
+
+<script src="contact.js"></script>
+</body>
+</html>

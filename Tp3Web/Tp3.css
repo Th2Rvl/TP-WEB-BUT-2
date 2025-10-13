@@ -1,0 +1,61 @@
+body {
+    margin-left: 30px !important;
+    margin-right: 30px !important;
+}
+
+[class*="col-"] {
+    background-color: #CBC9C9; 	/* couleur arrière plan */
+    border: 2px solid black;		/* Bordures  */
+    border-radius: 6px;			/* Arrondi cadres */
+    line-height: 70px;			/* hauteur des lignes */
+    text-align: center;			/* Centrage horizontal */
+    padding: 16px;
+    margin-bottom: 0;
+}
+
+.erreur{ 			/* Classe pour mise en couleur rouge des zones dont les données n'ont pas été envoyées */
+    color: red; 	/* couleur de la police rouge */
+}
+
+.ok{				/* Classe pour mise en couleur verte des zones dont les données ont été envoyées */
+    color: green; 	/* couleur de la police verte */
+}
+
+.saisie {
+    height: 30px;
+}
+
+.row {
+    margin-top: 0;
+    margin-right: 30px;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+}
+
+h1 { margin-bottom: 0;}
+
+textarea {
+    border-radius: 6px;
+    height: 80px;
+    width: 95%;
+}
+
+button {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.bouton {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centre verticalement le contenu */
+    align-items: center;
+    margin: 0 !important;
+    background-color: white !important;
+    height: 40px !important;
+    padding: 0 !important;
+    border-radius: 6px !important;
+}
+
+
+

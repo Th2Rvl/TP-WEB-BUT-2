@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <link rel="stylesheet" href="../bootstrap-5.3.2-dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../style.css">
+    </head>
+    <body>
+        <div class="container"> 
+            <!--Header-->
+            <div class="row header">
+                <div class = "col-6">
+                    <img src = "../images/Logo.jpg">
+                </div>
+                <div class = "col text">
+                    <h1>Ma Banque en ligne <br> IUT BANK ONLINE</h1>
+                </div>
+            </div>
+            <!--Presentation-->
+            <div class="row frame text">
+                <h1>-- Bienvenue M. Hubert Delaclasse --</h1>
+                <h2>Vous pourrez grâce à cette interface voir le détail de vos comptes et faire toutes vos opérations à distance</h2>
+            </div>
+            <!--Infos compte-->
+            <div class="row frame text">
+                <div class="col-3">
+                    <img src = "../images/CompteCourant.jpg">
+                </div>
+                <div class="col-9">
+                    <br><br><br>
+                    <h3 class = "text">Compte No 123456789ABC - Type : Compte courant</h3>
+                </div>
+            </div>
+            <!--Tableau-->
+            <div class="row">
+                <div class="col-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Libellé</th>
+                                <th scope="col">Débit</th>
+                                <th scope="col">Crédit</th>
+                                <th scope="col">Solde</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">01/08/2023</th>
+                                <td>Solde Initial</td>
+                                <td></td>
+                                <td><span class="texteVert">1000,00€</span></td>
+                                <td><span class="texteVert">1000,00€</span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">03/08/2023</th>
+                                <td>Prélèvement Loyer</td>
+                                <td><span class="texteRouge">250,00€</span></td>
+                                <td></td>
+                                <td><span class="texteVert">750,00€</span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">05/08/2023</th>
+                                <td>Versement APL</td>
+                                <td></td>
+                                <td><span class="texteVert">50,00€</span></td>
+                                <td><span class="texteVert">900,00€</span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">09/08/2023</th>
+                                <td>Paiement réparations voiture CB</td>
+                                <td><span class="texteRouge">950,00€</span></td>
+                                <td></td>
+                                <td><span class="texteRouge">-50,00€</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            
+            <!--Contact-->
+                <div class="row frame">
+                    <!--Bouton contact-->
+                    <div class="col-2">
+                        <br>
+                        <a href="../contact.html" class="btn btn-primary button">Nous contacter </a>
+                    </div>
+                    <!--Bouton retour-->
+                    <div class="col-1"></div>
+                    <div class="col-2">
+                        <br>
+                        <a href="listeComptes.html" class="btn btn-primary">Retour à la liste des comptes</a>
+                    </div>
+                    <!--Bouton deconnexion-->
+                    <div class="col-1"></div>
+                    <div class="col-2">
+                        <br>
+                        <a href="../index.html" class="btn btn-danger button">Déconnexion </a>
+                    </div>
+                    <!--Logo footer-->
+                    <div class="col-2"></div>
+                    <div class="col-2">
+                        <span class="text texteNoir">Réalisé par</span>
+                        <br>
+                        <img src = "../images/LogoIut.png" id ="logoIut">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
