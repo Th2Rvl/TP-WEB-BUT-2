@@ -65,21 +65,25 @@
         <h1>Etape 2</h1>
         <div class="row">
             <?php
-            $pdo = new PDO($dsn, $user, $password, $option);
-            $requette = $pdo->query("SELECT ID_CLIENT, CODE_CLIENT, NOM_MAGASIN, ADRESSE_1, ADRESSE_2, CODE_POSTAL, TELEPHONE, EMAIL FROM clients ORDER BY (ID_CLIENT = 4) DESC, ID_CLIENT ASC");
-            while ($donnees = $requette->fetch()) {
+            try {
+                $pdo = new PDO($dsn, $user, $password, $option);
+                $requette = $pdo->query("SELECT ID_CLIENT, CODE_CLIENT, NOM_MAGASIN, ADRESSE_1, ADRESSE_2, CODE_POSTAL, TELEPHONE, EMAIL FROM clients ORDER BY (ID_CLIENT = 4) DESC, ID_CLIENT ASC");
+                while ($donnees = $requette->fetch()) {
                     echo "<div class='col-lg-4 col-sm-6 col-xs-12'>";
-                        echo "<div class='cadre'>";
-                            echo "<br>ID : " . $donnees['ID_CLIENT'];
-                            echo "<br>Code client : " . $donnees['CODE_CLIENT'];
-                            echo "<br>Nom magasin : " . $donnees['NOM_MAGASIN'];
-                            echo "<br>Adresse 1 : " . $donnees['ADRESSE_1'];
-                            echo "<br>Adresse 2 : " . $donnees['ADRESSE_2'];
-                            echo "<br>Code postal / Ville : " . $donnees['CODE_POSTAL'];
-                            echo "<br>Telephone : " . $donnees['TELEPHONE'];
-                            echo "<br>Email : " . $donnees['EMAIL'];
-                        echo "</div>";
+                    echo "<div class='cadre'>";
+                    echo "<br>ID : " . $donnees['ID_CLIENT'];
+                    echo "<br>Code client : " . $donnees['CODE_CLIENT'];
+                    echo "<br>Nom magasin : " . $donnees['NOM_MAGASIN'];
+                    echo "<br>Adresse 1 : " . $donnees['ADRESSE_1'];
+                    echo "<br>Adresse 2 : " . $donnees['ADRESSE_2'];
+                    echo "<br>Code postal / Ville : " . $donnees['CODE_POSTAL'];
+                    echo "<br>Telephone : " . $donnees['TELEPHONE'];
+                    echo "<br>Email : " . $donnees['EMAIL'];
                     echo "</div>";
+                    echo "</div>";
+                }
+            } catch (PDOException $e) {
+                echo 'Page inaccessible';
             }
             ?>
         </div>
