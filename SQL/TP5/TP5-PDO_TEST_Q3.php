@@ -14,7 +14,7 @@
 	<body>
 		<h1>Test du script de la question 3</h1>
 		Tous les champs doivent être en rouge et bloquer l'enregistrement.
-		<form method="post" action="TP5-PDO-Q3.php">
+		<form method="post" action="TP5-PDO-Q2.php">
 			<input type="hidden" name="codeClient" value="Le texte est long">
 			<input type="hidden" name="nomMagasin" value="Le texte est trop trop trop trop long">
 			<input type="hidden" name="responsable" value="">								 
