@@ -1,4 +1,4 @@
-﻿Date;Type;Libellé;Debit;credit;Solde
+﻿Date;Type;Libellé;Debit;credit
 01/09/2023;SI;Solde début de mois;;1000
 03/09/2023;PR;Prélèvement Loyer;250;
 03/09/2023;VIR;Salaire Août;;653

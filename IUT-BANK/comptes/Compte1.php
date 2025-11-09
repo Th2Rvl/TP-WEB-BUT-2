@@ -9,6 +9,7 @@
         $soldePrecedent = $solde;
         return number_format($solde, 2);
     }
+    $arret = false
 ?>
 
 <!DOCTYPE html>
@@ -67,9 +68,19 @@
                                 $donnees = file($cheminFichier, FILE_IGNORE_NEW_LINES);
                                 $ligne = explode(";", $donnees[0]);
 
-                                /** Affichage du titre des colones */
+                                $typeFiltre = isset($_POST['typeEcriture']) ? $_POST['typeEcriture'] : "";
+                                $filtreDate = isset($_POST['filtreDate']) ? $_POST['filtreDate'] : "";
+
+                                /** Affichage du titre des colonnes */
                                 for ($i = 0; $i < count($ligne); $i++) {
-                                    if ($i == 1) {
+
+                                    if ($i == 0) {
+                                        echo "<th scope='col'>Date";
+                                        echo "<br><input type='date' name='date'>";
+                                        $selected = isset($_POST['filtreDate']) && $_POST['filtreDate'] == $filtreDate ? "selected" : "";
+                                        echo "<button type='submit' class='btn btn-primary' name='filtreDate' $selected>Filtrer</button>";
+                                        echo "</th>";
+                                    } elseif ($i == 1) {
                                         echo "<th scope='col'>$ligne[$i]";
                                         echo "<br><select name='typeEcriture'>";
                                             echo "<option value='tous'>Tous</option>";
@@ -86,10 +97,14 @@
                                         echo "</th>";
                                     } else {
                                         echo "<th scope='col'>$ligne[$i]</th>";
+                                        if ($i == 4 && $typeFiltre == 'tous') {
+                                            echo "<th scope='col'>Solde</th>";
+                                        }
                                     }
                                 }
                             } catch (Exception $e) {
                                 echo "<h1>Impossible d'accéder au détail du compte bancaire !</h1>";
+                                $arret = true;
                             }
                         ?>
                     </tr>
@@ -97,42 +112,49 @@
                     <tbody>
                     <tr>
                         <?php
-                            try {
-                                $typeFiltre = isset($_POST['typeEcriture']) ? $_POST['typeEcriture'] : "";
-                                /** Affichage de du contenus des colonnes */
-                                for ($i = 1; $i < count($donnees); $i++) {
-                                    $ligne = explode(";", $donnees[$i]);
-                                    if ($typeFiltre != "" && $ligne[1] != $typeFiltre && $typeFiltre != "tous") {
-                                        continue;
-                                        /** Saute la ligne si le type de l'écriture ne correspond pas au filtre */
-                                    }
-                                    echo "<tr>";
-                                    for ($j = 0; $j < count($ligne); $j++) {
-                                        $classeCss1 = $j == 3 ? "texteRouge" : "";
-                                        $classeCss2 = $j >= 4 ? "texteVert" : "";
-                                        if ($j == 1) {
-                                            /** Affichage du type complet */
-                                            for ($k = 1; $k < count($donneesTypeEcritures); $k++) {
-                                                $ligneTypeEcriture = explode(";", $donneesTypeEcritures[$k]);
-                                                if ($ligne[$j] == $ligneTypeEcriture[0]) {
-                                                    echo "<td><span class='$classeCss1 $classeCss2'>$ligneTypeEcriture[1]</span></td>";
-                                                }
-                                            }
-                                        } elseif ($j < 3) {
-                                            echo "<td><span class='$classeCss1 $classeCss2'>$ligne[$j]</span></td>";
-                                        } elseif ($j == 3 || $j == 4) {
-                                            $nombre = $ligne[$j] == "" ? "" : number_format($ligne[$j], 2);
-                                            echo "<td><span class='$classeCss1 $classeCss2'>$nombre</span></td>";
+                            if (!$arret) {
+                                try {
+                                    /** Affichage de du contenus des colonnes */
+                                    for ($i = 1; $i < count($donnees); $i++) {
+                                        $ligne = explode(";", $donnees[$i]);
+                                        if ($typeFiltre != "" && $ligne[1] != $typeFiltre && $typeFiltre != "tous") {
+                                            continue;
+                                            /** Saute la ligne si le type de l'écriture ne correspond pas au filtre */
                                         }
-                                    }
+                                        if ($filtreDate != "" && $ligne[0] != $filtreDate) {
+                                            continue;
+                                        }
+                                        echo "<tr>";
+                                        for ($j = 0; $j < count($ligne); $j++) {
+                                            $classeCss1 = $j == 3 ? "texteRouge" : "";
+                                            $classeCss2 = $j >= 4 ? "texteVert" : "";
+                                            if ($j == 1) {
+                                                /** Affichage du type complet */
+                                                for ($k = 1; $k < count($donneesTypeEcritures); $k++) {
+                                                    $ligneTypeEcriture = explode(";", $donneesTypeEcritures[$k]);
+                                                    if ($ligne[$j] == $ligneTypeEcriture[0]) {
+                                                        echo "<td><span class='$classeCss1 $classeCss2'>$ligneTypeEcriture[1]</span></td>";
+                                                    }
+                                                }
+                                            } elseif ($j < 3) {
+                                                echo "<td><span class='$classeCss1 $classeCss2'>$ligne[$j]</span></td>";
+                                            } elseif ($j == 3 || $j == 4) {
+                                                $nombre = $ligne[$j] == "" ? "" : number_format($ligne[$j], 2);
+                                                echo "<td><span class='$classeCss1 $classeCss2'>$nombre</span></td>";
+                                            }
+                                        }
 
-                                    /** Affichage du sole */
-                                    $solde = calculeSolde($i);
-                                    echo "<td><span class='" . ($solde < 0 ? 'texteRouge' : 'texteVert') . "'>$solde</span></td>";
-                                    echo "</tr>";
+                                        /** Affichage du solde */
+                                        if ($typeFiltre == 'tous') {
+                                            $solde = calculeSolde($i);
+                                            echo "<td><span class='" . ($solde < 0 ? 'texteRouge' : 'texteVert') . "'>$solde</span></td>";
+                                            echo "</tr>";
+                                        }
+
+                                    }
+                                } catch (Exception $e) {
+                                    echo "";
                                 }
-                            } catch (Exception $e) {
-                                echo "";
                             }
                         ?>
                     </tbody>

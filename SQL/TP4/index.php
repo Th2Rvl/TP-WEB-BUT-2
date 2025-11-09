@@ -13,7 +13,7 @@
 <body>
     <div class="container">
     <h1>Etape 1</h1>
-    <table class="table-striped table-bordered">
+    <table class="table table-striped table-bordered">
         <tr>
             <th>ID</th>
             <th>Code Client</th>
