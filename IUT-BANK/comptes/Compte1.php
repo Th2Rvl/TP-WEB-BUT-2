@@ -6,17 +6,8 @@
         exit();
     }
 
-    /** Récupération du nom du client */
-    $nomClient = "";
-    $loginPwd = file("../fichierDonnees/Logins.csv", FILE_IGNORE_NEW_LINES);
-    for ($i = 1; $i < count($loginPwd); $i++) {
-        $ligne = explode(";", $loginPwd[$i]);
-        if ($ligne[0] == $_SESSION['identifiant']) {
-            $nomClient = $ligne[2];
-            break;
-        }
-    }
-
+    require_once("../fonctions.php");
+    $nomClient = nomUtilisateur();
     /** Calcul du solde du compte */
     $soldePrecedent = 0;
     function calculeSolde($index) {
@@ -32,9 +23,7 @@
 
     /** Déconnexion de l'utilisateur */
     if (isset($_POST['deconnexion'])) {
-        session_destroy();
-        header('Location: ../index.php');
-        exit();
+        deconnecter();
     }
 ?>
 

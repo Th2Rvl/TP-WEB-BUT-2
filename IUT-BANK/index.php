@@ -8,7 +8,7 @@
             $identifiant = $_POST['identifiant'];
             $motDePasse = $_POST['motDePasse'];
             if (verifUtilisateur($identifiant, $motDePasse)) {
-                header('Location: comptes/Compte1.php');
+                header('Location: comptes/listeComptes.php');
                 exit();
             } else {
                 $erreurLogin = true;
