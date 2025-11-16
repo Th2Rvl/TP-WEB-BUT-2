@@ -1,14 +1,22 @@
 <?php
+    $erreurServeur = false;
+    $erreurLogin = false;
     try {
         session_start();
         require_once("fonctions.php");
         if (isset($_POST['connexion']) && (isset($_POST['identifiant']) && isset($_POST['motDePasse']))) {
             $identifiant = $_POST['identifiant'];
             $motDePasse = $_POST['motDePasse'];
+            if (verifUtilisateur($identifiant, $motDePasse)) {
+                header('Location: comptes/Compte1.php');
+                exit();
+            } else {
+                $erreurLogin = true;
+            }
         }
 
     } catch (PDOException $e) {
-        echo "Page inaccessible";
+        $erreurServeur = true;
     }
 
 ?>
@@ -38,6 +46,19 @@
             </div>
             <!--Formulaire-->
             <div class="row frame text">
+                <?php
+                    if ($erreurServeur) {
+                        echo '<h2>Problème serveur, authentification impossible actuellement.
+                              <br>Merci de ré-essayer ultérieurement.</h2>';
+                    }
+                ?>
+                <?php if(!$erreurServeur): ?>
+                <?php
+                if ($erreurLogin) {
+                    echo
+                        '<div class="col-12"><h3 class="text texteRouge">Identifiant ou mot de passe incorrect</h3></div>';
+                }
+                ?>
                 <div class="col-6">
                     Identifiant :
                     <br>
@@ -49,16 +70,8 @@
                     <input class="form-control" type="text" placeholder="Tapez votre mot de passe" name="motDePasse">
                 </div>
                 <button type="submit" name="connexion" class="btn btn-primary">
-                    <a class="btn btn-primary">Me connecter</a>
+                    Me connecter
                 </button>
-                    <?php
-                        if (isset($_POST['connexion'])) {
-                            if (isset($identifiant) && isset($motDePasse) && verifUtilisateur($identifiant, $motDePasse)) {
-                                header('Location: comptes/Compte1.php');
-                                exit();
-                            }
-                        }
-                    ?>
             </div>
             <!--Contact-->
             <div class="row frame">
@@ -72,6 +85,7 @@
                     <br>
                     <img src = "images/LogoIut.png" id ="logoIut">
                 </div>
+                <?php endif; ?>
             </div>
         </div>
     </form>

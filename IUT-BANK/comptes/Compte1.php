@@ -1,4 +1,23 @@
 <?php
+    /** Vérification que l'utilisateur est bien connecté*/
+    session_start();
+    if (!isset($_SESSION['identifiant']) || !isset($_SESSION['motDePasse']) || $_SESSION['maSession'] != session_id()) {
+        header('Location: ../index.php');
+        exit();
+    }
+
+    /** Récupération du nom du client */
+    $nomClient = "";
+    $loginPwd = file("../fichierDonnees/Logins.csv", FILE_IGNORE_NEW_LINES);
+    for ($i = 1; $i < count($loginPwd); $i++) {
+        $ligne = explode(";", $loginPwd[$i]);
+        if ($ligne[0] == $_SESSION['identifiant']) {
+            $nomClient = $ligne[2];
+            break;
+        }
+    }
+
+    /** Calcul du solde du compte */
     $soldePrecedent = 0;
     function calculeSolde($index) {
         global $soldePrecedent, $donnees;
@@ -9,7 +28,14 @@
         $soldePrecedent = $solde;
         return number_format($solde, 2);
     }
-    $arret = false
+    $arret = false;
+
+    /** Déconnexion de l'utilisateur */
+    if (isset($_POST['deconnexion'])) {
+        session_destroy();
+        header('Location: ../index.php');
+        exit();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +59,7 @@
         </div>
         <!--Presentation-->
         <div class="row frame text">
-            <h1>-- Bienvenue M. Hubert Delaclasse --</h1>
+            <h1>-- Bienvenue <?php echo $nomClient ?>  --</h1>
             <h2>Vous pourrez grâce à cette interface voir le détail de vos comptes et faire toutes vos opérations à distance</h2>
         </div>
         <!--Infos compte-->
@@ -180,7 +206,9 @@
             <div class="col-1"></div>
             <div class="col-2">
                 <br>
-                <a href="../index.html" class="btn btn-danger button">Déconnexion </a>
+                <button type="submit" class="btn btn-danger button" name="deconnexion">
+                    Déconnexion
+                </button>
             </div>
             <!--Logo footer-->
             <div class="col-2"></div>
