@@ -25,6 +25,11 @@
     if (isset($_POST['deconnexion'])) {
         deconnecter();
     }
+
+    if (isset($_POST['retourListeComptes'])) {
+        header('Location: listeComptes.php');
+        exit();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -189,7 +194,9 @@
             <div class="col-1"></div>
             <div class="col-2">
                 <br>
-                <a href="listeComptes.html" class="btn btn-primary">Retour à la liste des comptes</a>
+                <button type="submit" class="btn btn-primary" name="retourListeComptes">
+                    Retour à la liste des comptes
+                </button>
             </div>
             <!--Bouton deconnexion-->
             <div class="col-1"></div>
