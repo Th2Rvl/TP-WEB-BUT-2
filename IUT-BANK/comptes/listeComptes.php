@@ -3,11 +3,11 @@
     require_once("../fonctions.php");
     verifierSession();
 
-    $nomClient = nomUtilisateur();
+    $nomClient = $_SESSION['nomClient'];
 
-    if (isset($_POST['deconnexion'])) {
-        deconnecter();
-    }
+//    if (isset($_POST['deconnexion'])) {
+//        deconnecter();
+//    }
 
     if (isset($_POST['detailCompte'])) {
         header('Location: Compte1.php');
@@ -85,9 +85,11 @@
                 <div class="col-1"></div>
                 <div class="col-2">
                     <br>
-                    <button type="submit" class="btn btn-danger button" name="deconnexion">
-                        Déconnexion
-                    </button>
+                    <form method="post" action="../modele/deconnexion.php">
+                        <button type="submit" class="btn btn-danger button" name="deconnexion">
+                            Déconnexion
+                        </button>
+                    </form>
                 </div>
                 <!--Logo footer-->
                 <div class="col-2"></div>

@@ -1,13 +1,8 @@
 <?php
-    /** Vérification que l'utilisateur est bien connecté*/
-    session_start();
-    if (!isset($_SESSION['identifiant']) || !isset($_SESSION['motDePasse']) || $_SESSION['maSession'] != session_id()) {
-        header('Location: ../index.php');
-        exit();
-    }
-
     require_once("../fonctions.php");
-    $nomClient = nomUtilisateur();
+    verifierSession();
+
+    $nomClient = $_SESSION['nomClient'];
     /** Calcul du solde du compte */
     $soldePrecedent = 0;
     function calculeSolde($index) {
@@ -22,9 +17,9 @@
     $arret = false;
 
     /** Déconnexion de l'utilisateur */
-    if (isset($_POST['deconnexion'])) {
-        deconnecter();
-    }
+//    if (isset($_POST['deconnexion'])) {
+//        deconnecter();
+//    }
 
     if (isset($_POST['retourListeComptes'])) {
         header('Location: listeComptes.php');
@@ -40,7 +35,7 @@
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-<form method="post">
+<!--<form method="post">-->
     <div class="container">
         <!--Header-->
         <div class="row header">
@@ -202,9 +197,11 @@
             <div class="col-1"></div>
             <div class="col-2">
                 <br>
-                <button type="submit" class="btn btn-danger button" name="deconnexion">
-                    Déconnexion
-                </button>
+                <form action="../modele/deconnexion.php" method="POST" >
+                    <button type="submit" class="btn btn-danger button" name="deconnexion">
+                        Déconnexion
+                    </button>
+                </form>
             </div>
             <!--Logo footer-->
             <div class="col-2"></div>
@@ -215,6 +212,6 @@
             </div>
         </div>
     </div>
-</form>
+<!--</form>-->
 </body>
 </html>

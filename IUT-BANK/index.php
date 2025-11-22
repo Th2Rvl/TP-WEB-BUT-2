@@ -53,38 +53,38 @@
                     }
                 ?>
                 <?php if(!$erreurServeur): ?>
-                <?php
-                if ($erreurLogin) {
-                    echo
-                        '<div class="col-12"><h3 class="text texteRouge">Identifiant ou mot de passe incorrect</h3></div>';
-                }
-                ?>
-                <div class="col-6">
-                    Identifiant :
-                    <br>
-                    <input class="form-control" type="text" placeholder="Tapez votre numéro de compte" name="identifiant">
+                    <?php
+                    if ($erreurLogin) {
+                        echo
+                            '<div class="col-12"><h3 class="text texteRouge">Identifiant ou mot de passe incorrect</h3></div>';
+                    }
+                    ?>
+                    <div class="col-6">
+                        Identifiant :
+                        <br>
+                        <input class="form-control" type="text" placeholder="Tapez votre numéro de compte" name="identifiant">
+                    </div>
+                    <div class="col-6">
+                        Mot de passe :
+                        <br>
+                        <input class="form-control" type="text" placeholder="Tapez votre mot de passe" name="motDePasse">
+                    </div>
+                    <button type="submit" name="connexion" class="btn btn-primary">
+                        Me connecter
+                    </button>
                 </div>
-                <div class="col-6">
-                    Mot de passe :
-                    <br>
-                    <input class="form-control" type="text" placeholder="Tapez votre mot de passe" name="motDePasse">
-                </div>
-                <button type="submit" name="connexion" class="btn btn-primary">
-                    Me connecter
-                </button>
-            </div>
-            <!--Contact-->
-            <div class="row frame">
-                <div class="col-2">
-                    <br>
-                    <a href="contact.html" class="btn btn-primary button">Nous contacter</a>
-                </div>
-                <div class="col-8"></div>
-                <div class="col-2">
-                    <span class="text texteNoir">Réalisé par</span>
-                    <br>
-                    <img src = "images/LogoIut.png" id ="logoIut">
-                </div>
+                <!--Contact-->
+                <div class="row frame">
+                    <div class="col-2">
+                        <br>
+                        <a href="contact.html" class="btn btn-primary button">Nous contacter</a>
+                    </div>
+                    <div class="col-8"></div>
+                    <div class="col-2">
+                        <span class="text texteNoir">Réalisé par</span>
+                        <br>
+                        <img src = "images/LogoIut.png" id ="logoIut">
+                    </div>
                 <?php endif; ?>
             </div>
         </div>
